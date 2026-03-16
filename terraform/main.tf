@@ -2,11 +2,11 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-resource "aws_instance" "jenkins_server" {
-  ami           = "ami-0dee22c13ea7a9a67"
-  instance_type = "t3.micro"
+resource "aws_instance" "example" {
+  ami           = "ami-0f5ee92e2d63afc18"
+  instance_type = "t2.micro"
 
   tags = {
-    Name = "Jenkins-Terraform-Instance"
+    Name = "Terraform-Jenkins-Server"
   }
 }
