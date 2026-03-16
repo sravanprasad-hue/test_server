@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    environment {
+        GIT_REPO = 'https://github.com/sravanprasad-hue/test_server.git'
+    }
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: "${GIT_REPO}"
+            }
+        }
+
+        stage('Terraform Init') {
+            steps {
+                sh 'cd terraform && terraform init'
+            }
+        }
+
+        stage('Terraform Validate') {
+            steps {
+                sh 'cd terraform && terraform validate'
+            }
+        }
+
+        stage('Terraform Plan') {
+            steps {
+                sh 'cd terraform && terraform plan'
+            }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                sh 'cd terraform && terraform apply -auto-approve'
+            }
+        }
+
+        stage('Deploy Application') {
+            steps {
+                echo "Infrastructure created successfully"
+            }
+        }
+    }
+}
