@@ -3,10 +3,10 @@ provider "aws" {
 }
 
 resource "aws_instance" "jenkins_server" {
-  ami           = "ami-0f5ee92e2d63afc18"
+  ami           = "ami-03f4878755434977f"
   instance_type = "t2.micro"
 
   tags = {
-    Name = "jenkins-terraform-server"
+    Name = "Jenkins-Terraform-Instance"
   }
 }
